@@ -92,3 +92,5 @@ if st.sidebar.checkbox("Visualizar Marceneiros"):
         st.write(f"**Nome:** {carpinteiro['nome']}")
         st.write(f"**Especialidades:** {', '.join(carpinteiro['especialidade'])}")
         st.image(carpinteiro['portfolio'][0] if carpinteiro['portfolio'] else "https://via.placeholder.com/150")
+import subprocess
+subprocess.run(["pip", "install", "streamlit==1.27.0"])
