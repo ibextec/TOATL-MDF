@@ -74,3 +74,21 @@ def main():
 
 if __name__ == "__main__":
     main()
+streamlit==1.27.0
+pymongo==4.5.0
+python-dotenv==1.0.0
+MONGODB_URI=mongodb+srv://<seu-usuario>:<sua-senha>@cluster0.mongodb.net/marceneiros?retryWrites=true&w=majority
+[server]
+port = 8501
+# Instalar dependências
+pip install -r requirements.txt
+
+# Executar localmente
+streamlit run app.py
+# Dashboard (aba extra)
+if st.sidebar.checkbox("Visualizar Marceneiros"):
+    st.header("Lista de Marceneiros")
+    for carpinteiro in carpinteiros.find():
+        st.write(f"**Nome:** {carpinteiro['nome']}")
+        st.write(f"**Especialidades:** {', '.join(carpinteiro['especialidade'])}")
+        st.image(carpinteiro['portfolio'][0] if carpinteiro['portfolio'] else "https://via.placeholder.com/150")
